@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- personal css -->
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <!-- Bootstrap css -->
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <!-- end of fonts -->
+    <title>Workout Tracker</title>
+
+    
+</head>
+<body>
+    <!-- Navigation bar -->
+    <section class="header" id="header">
+        <nav>
+            <a href="{% url 'home' %}" style="color: white;">Logo here</a>
+            <div class="nav_bar">
+                <ul class="nav_group">
+                    <li> <a href="#" class="nav_link">Login</a></li>
+                    <li> <a href="#" class="nav_link">Workouts</a></li>
+                    <li> <a href="#" class="nav_link">About us</a> </li>
+                    <li> <a href="#" class="nav_link">Contact us</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="text-box">
+            <h1>Your Personal Workout Tracker</h1>
+            <p>Find programs loved by the community and track your progress</p>
+            <a id='get_started' href="#">Get Started</a>
+        </div>
+    </section>
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <!-- Bootstrap JS -->
+</body>
+</html>
