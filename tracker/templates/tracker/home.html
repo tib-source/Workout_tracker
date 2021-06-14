@@ -3,6 +3,7 @@
     <div class="text-box">
         <h1>Your Personal Workout Tracker</h1>
         <p>Find programs loved by the community and track your progress</p>
-        <a id='get_started' href="#">Get Started</a>
+        <p>Welcome {{user.username}}</p>
+        <a id='get_started' href="{% url 'register' %}">Get Started</a>
     </div>
 {% endblock content %}

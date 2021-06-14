@@ -11,15 +11,12 @@ def register_view(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('dashboard') ### YOU NEED TO MAKE A DASHBOARD 
+            return redirect('home') ### YOU NEED TO MAKE A DASHBOARD 
         else:
             form = UserCreationForm()
     else:
         form = UserCreationForm()
     context = {'form':form}
-    return render(request, 'user/register.html', context)
+    return render(request, 'users/register.html', context)
 
-@login_required
-def dashboard(request):
-    
-    return render(request, 'user/dashboard.html', context)
+

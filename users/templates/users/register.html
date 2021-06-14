@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% block content %}
+    <div class="login">
+        <form method="POST" class="box-background from-group">
+            <h1>Register</h1>
+            <hr>
+            {% csrf_token %}
+            {{form}}
+            <small class="text-muted">Already have an account? Log in<a href="#"> Here</a></small>
+            <button type="submit" class="log">Sign Up</button>
+
+        </form>
+    </div>
+{% endblock content %}
