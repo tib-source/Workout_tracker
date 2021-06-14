@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% block content %}
+<style>
+    *{
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+</style>
+    <div class="login">
+        <form method="POST" class="box-background from-group">
+            <h1>Login</h1>
+            <hr>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username: </label>
+                <input type="text" class="form-control" name="username"  placeholder="Enter Username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password: </label>
+                <input type="password" name="password" class="form-control" placeholder="Password">
+            </div>
+
+            <small><a href="#">Forgot Password?</a></small>
+            <button type="submit" class="log">Sign In</button>
+
+        </form>
+    </div>
+{% endblock content %}
