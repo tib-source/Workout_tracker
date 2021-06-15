@@ -107,6 +107,7 @@ nav{
    color: white;
 }
 
+/* LOGIN PAGE  */
 
 .login{
     position:absolute;
@@ -117,19 +118,30 @@ nav{
 }
 
 .log{
-    padding: 10px;
+    margin-left: 25%;
+    padding: 10px 30px;
     background: transparent;
     transition: .5s;
     color: white;
 }
 .log:hover{
-    background-color: tomato;
+    background-color: lightcoral;
 }
+
+hr {
+    margin-left: 0;
+    margin-right: 0;
+}
+
 .box-background{
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     padding: 30px 50px;
-    background-image:linear-gradient(rgb(106, 98, 98),rgba(102, 95, 95, 0.467) ) ;
-    border-radius: 10px;
+    background-image:linear-gradient(rgba(106, 98, 98,0.7),rgba(102, 95, 95, 0.1) ) ;
+    backdrop-filter: blur(2rem);
+    border-radius: 2rem;
 }
 .box-background h1{
     text-align: center;
@@ -148,4 +160,9 @@ nav{
 
 .box-background>*{
     margin: 20px 0 0 0;
+}
+
+
+.logout{
+    text-align: center;
 }

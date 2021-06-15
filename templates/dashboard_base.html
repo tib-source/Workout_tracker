@@ -19,8 +19,42 @@
     <title>Dashboard - {{user.username}} </title>
 </head>
 <body>
-    {% block content %}
+    <main>
+    
+        <div class="sidebar">
+            <!-- profile pic here  -->
+            <span class="user-info">
+                <div class="img"></div>
+                <!-- username should go here -->
+                <p>Tibebe Demissie</p> 
 
-    {% endblock content %}
+            </span>
+            <!-- nav bar items here -->
+            <div class="links">
+                <div class="link">
+                    <!-- FIND LOGO TO PUT HERE -->
+                    <p> <a href="#">Home</a> </p>
+                </div>
+                <div class="link">
+                    <!-- FIND LOGO TO PUT HERE -->
+                    <p> <a href="#">Workouts</a> </p>
+                </div>
+                <div class="link">
+                    <!-- FIND LOGO TO PUT HERE -->
+                    <p> <a href="#">Contact us</a> </p>
+                </div>            
+                <div class="link">
+                    <!-- FIND LOGO TO PUT HERE -->
+                    <p> <a href="{% url 'logout' %}">Logout</a> </p>
+                </div>
+            </div>
+        </div>
+        {% block content %}
+
+        {% endblock content %}
+        
+    </main>
+
+
 </body>
 </html>
