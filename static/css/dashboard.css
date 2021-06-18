@@ -1,7 +1,6 @@
 *{
     margin: 0;
     padding: 0;
-
 }
 
 main{
@@ -14,7 +13,7 @@ main{
     position: relative;
 
     background-image: linear-gradient(rgba(4,9,30,0.7),
-     rgba(4,9,30,0.7)), url(/static/images/background.jpeg);
+     rgba(4,9,30,0.7)), url(/media/static/web_img/background.jpeg);
      background-position: center;
      background-size: cover;
      position: relative;
@@ -63,15 +62,6 @@ main{
     color: white;
 }
 
-.img{
-    background-image: url(/static/images/background.jpeg);
-    background-size: cover;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.159);
-
-}
 
 .link a{
     display: block;
@@ -86,6 +76,10 @@ main{
 
 
 .link a:hover{
-    background-image:linear-gradient(to left, rgba(255, 86, 56, 0.371), rgba(255, 255, 255, 0));
+    background-image:linear-gradient(to left, coral, rgba(255, 255, 255, 0));
     cursor: pointer;
 }
+
+
+/* DASH BAORD PAGEEEE  */
+

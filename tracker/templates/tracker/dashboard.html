@@ -1,6 +1,19 @@
 {% extends 'dashboard_base.html'%}
 {% block content %}
 
+<div class="content">
+    <label for="goal">Current Goal</label>
+    <select class="custom-select mr-sm-2" id="goal">
+        <option selected>Choose...</option>
+        {% for option in goals %}
+            <option value="1">Gain Muscle</option>
+            <option value="2">Loose Weight</option>
+            <option value="3">Stay Fit</option>
+        {% endfor %}
+    </select>
+    <button >Set</button>
+</div> -->
+
 {% endblock content %}
 
 
@@ -8,28 +21,5 @@
 
 
 
-<!-- 
-
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Workouts</a></li>
-            <li><a href="#">Activity</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
 
 
-
-
-<!-- IGNORE  -->
-
-<div class="content">
-    <form method="POST">
-        <label for="goal">Current Goal</label>
-        <select class="custom-select mr-sm-2" id="goal">
-            <option selected>Choose...</option>
-            <option value="1">Gain Muscle</option>
-            <option value="2">Loose Weight</option>
-            <option value="3">Stay Fit</option>
-        </select>
-    </form>
-</div> -->

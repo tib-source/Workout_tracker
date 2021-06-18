@@ -16,18 +16,65 @@
     <!-- personal css -->
     <link rel="stylesheet" href="{% static 'css/dashboard.css'%}">
 
+    <style>
+        /* using the css here because i am planning to use django variables inside them */
+
+    .img{
+    background-image: url({{user.profile.image.url}});
+    background-position: center;
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.159);
+
+    }
+
+    .level{
+        width: 100%;
+        height:1.5rem;
+        border-radius: .2rem;
+        background: coral;
+        position: relative;
+        overflow: hidden;
+    }
+    .exp{
+        font-size: 13px;
+        font-weight: 400;
+        text-align: center;
+        margin: 5px;
+        padding:0;
+        
+    }
+
+    .level::after{
+        content: '';
+        font-size:13px;
+        font-weight: bold;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.382);
+        backdrop-filter: blur(50rem);
+        position: absolute;
+        left: 80%;
+    }
+    </style>
+
     <title>Dashboard - {{user.username}} </title>
 </head>
 <body>
     <main>
-    
         <div class="sidebar">
             <!-- profile pic here  -->
             <span class="user-info">
                 <div class="img"></div>
                 <!-- username should go here -->
-                <p>Tibebe Demissie</p> 
-
+                <p>{{user.profile.fullname}}</p>
+                <div class="gamify">
+                    <p class="exp">EXP: {{user.profile.exp}}</p>
+                    <div class="level"></div>
+                    <p>Current Level: 5</p>  
+                </div>
             </span>
             <!-- nav bar items here -->
             <div class="links">
@@ -52,9 +99,6 @@
         {% block content %}
 
         {% endblock content %}
-        
     </main>
-
-
 </body>
 </html>

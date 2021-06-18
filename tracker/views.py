@@ -18,6 +18,6 @@ def homeview(request):
 @login_required(login_url='login')
 def dashboard_view(request):
     context = {
-        'meow':'TIBEBEB MOEWWW'
+        
     }
     return render(request, 'tracker/dashboard.html', context)
