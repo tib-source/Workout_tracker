@@ -1,18 +1,73 @@
 {% extends 'dashboard_base.html'%}
+
+{% block css%}
+
+{% endblock%}
+
+
 {% block content %}
 
 <div class="content">
-    <label for="goal">Current Goal</label>
-    <select class="custom-select mr-sm-2" id="goal">
-        <option selected>Choose...</option>
-        {% for option in goals %}
-            <option value="1">Gain Muscle</option>
-            <option value="2">Loose Weight</option>
-            <option value="3">Stay Fit</option>
-        {% endfor %}
-    </select>
-    <button >Set</button>
-</div> -->
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Dashboard</h1> 
+            <p>Current Workout : xxxxxxxxx</p>
+        </div> 
+    
+        <div class="entry links">
+            <div class="link">   
+                <a href="#">Log new Workout</a>
+            </div>
+            <div class="link">
+                <a class="link" href="#">Log new Weight</a>
+            </div>
+        </div>
+    
+        <div class="info">
+            <div class="activity">
+                <canvas id="activity"><div></div></canvas>
+            </div>
+            <div class="weight">
+                <canvas id="weight"><div></div></canvas>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<div class="ranking sidebar">
+    <div class="rank_titile">
+        <h3>  User Ranking</h3>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <th scope="col">Rank</th>
+                <th scope="col">User</th>
+                <th scope="col">EXP</th>
+            </thead>
+            <tbody>
+                {% for user_rank in ranking %}
+                    {% if user_rank == request.user %}
+                        <tr class="table-light" id="selected">
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>-{{user_rank.username}}-</td>
+                            <td>{{user_rank.profile.exp}}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{user_rank.username}}</td>
+                            <td>{{user_rank.profile.exp}}</td>
+                        </tr>
+                    {% endif%}
+    
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
 
 {% endblock content %}
 

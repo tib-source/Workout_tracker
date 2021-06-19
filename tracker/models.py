@@ -8,3 +8,10 @@ GOAL_CHOICES = [
 class WorkOut(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     goal = models.CharField(max_length=20, choices=GOAL_CHOICES, default='Gaining Muscle')
+
+    def __str__(self) -> str:
+        return f"{self.user.username}'s Workout"
+
+    @property
+    def get_goals(self):
+        return [x[1] for x in GOAL_CHOICES]

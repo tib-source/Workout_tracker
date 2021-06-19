@@ -40,7 +40,7 @@
     }
     .exp{
         font-size: 13px;
-        font-weight: 400;
+        font-weight: 300;
         text-align: center;
         margin: 5px;
         padding:0;
@@ -56,9 +56,14 @@
         background-color: rgba(0, 0, 0, 0.382);
         backdrop-filter: blur(50rem);
         position: absolute;
-        left: 80%;
+        left: {{user.profile.get_level_percentage}}%;
     }
+
+    {% block css%}
+
+    {% endblock%}
     </style>
+
 
     <title>Dashboard - {{user.username}} </title>
 </head>
@@ -73,7 +78,8 @@
                 <div class="gamify">
                     <p class="exp">EXP: {{user.profile.exp}}</p>
                     <div class="level"></div>
-                    <p>Current Level: 5</p>  
+                    <p class="exp">Current Level -> {{user.profile.get_level}}</p>  
+                    <p class="exp">Next Level -> {{user.profile.next_level}} EXP</p>  
                 </div>
             </span>
             <!-- nav bar items here -->

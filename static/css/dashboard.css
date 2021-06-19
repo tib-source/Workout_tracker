@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
 }
-
+body{
+    display: flex;
+}
 main{
     min-height: 100vh;
     width: 100%;
@@ -11,7 +13,6 @@ main{
     align-items: center;
     justify-content: center;
     position: relative;
-
     background-image: linear-gradient(rgba(4,9,30,0.7),
      rgba(4,9,30,0.7)), url(/media/static/web_img/background.jpeg);
      background-position: center;
@@ -22,10 +23,9 @@ main{
 .sidebar{
     background-image:linear-gradient(rgba(106, 98, 98,0.7),rgba(102, 95, 95, 0.1) ) ;
     backdrop-filter: blur(2rem);
-    position: absolute;
     height: 100vh;
     left: -2%;
-    padding: 5rem;
+    padding: 5rem 3rem;
     border-radius: .5rem;
     display: flex;
     flex-direction: column;
@@ -83,3 +83,80 @@ main{
 
 /* DASH BAORD PAGEEEE  */
 
+.content{
+
+    color: white;
+    flex: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container{
+    width: 70%;
+    background-image:linear-gradient(rgba(106, 98, 98,0.7),rgba(102, 95, 95, 0.1) ) ;
+    backdrop-filter: blur(2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 90%;
+    border-radius: .5rem;
+
+
+}
+
+.header{
+    color: white;
+    flex: 4;
+    margin-top: 7rem;
+    text-align: center;
+}
+
+.entry{
+    flex: 4;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 1rem;
+}
+
+.info{
+    flex: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 50%;
+    background-image:linear-gradient(rgba(106, 98, 98,0.7),rgba(102, 95, 95, 0.1));
+    backdrop-filter: blur(2rem);
+    padding: 2rem;
+    border-radius:1rem;
+    margin-bottom: 2rem;
+
+}
+
+.info>*{
+    width: 400px;
+    height: 400px;
+    margin: 2px;
+    background: white;
+    border-radius: 1rem;
+}
+
+.ranking{
+    flex:1.5;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.ranking>table{
+    color: white ;
+}
+
+
+.table{
+    color: white;
+}
