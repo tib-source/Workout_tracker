@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.base import Model
 from django.db.models.deletion import DO_NOTHING
 import bisect
 import datetime
+
 
  #### LEVEL SYSTEM ####
 BASE_EXP = 100
@@ -79,3 +81,13 @@ class Profile(models.Model):
         return (weights, date)
 
 
+class Contact(models.Model):
+    username = models.CharField(max_length=15, null=True, default=None)
+    title = models.TextField(max_length=100)
+    message = models.TextField(max_length=400)
+
+    def __str__(self):
+        if self.username:
+            return f"{self.user} - {self.title}"
+        else:
+            return self.title

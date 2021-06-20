@@ -1,6 +1,7 @@
 from typing import ContextManager
+from users.models import Contact
 from django.shortcuts import redirect, render
-from .form import UserCreationForm
+from .form import ContactForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
@@ -35,3 +36,20 @@ def register_view(request):
     return render(request, 'users/register.html', context)
 
 
+def contact_view(request):
+    context = {}
+    if request.POST: 
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            try:
+                username = form.cleaned_data.get('username')
+            except:
+                username = None
+            title = form.cleaned_data.get('title')
+            message = form.cleaned_data.get('message')
+            Contact(username=username, title=title, message=message)
+            messages.info(request, 'You message has been sent')
+            render(request, 'users/contact.html', context)
+    form = ContactForm()
+    return render(request, 'users/contact.html', context)

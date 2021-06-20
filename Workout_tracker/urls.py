@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.urls.conf import include
 from django.contrib.auth import views as auth_views
-from users.views import register_view, loginView
+from users.views import contact_view, register_view, loginView
 
 urlpatterns = [
 
@@ -30,6 +30,8 @@ urlpatterns = [
 
     #--- Users Section ---#
     path('register/', register_view, name='register'),
+
+    path('contact/', contact_view, name='contact'),
 
     path('login/', loginView, name='login'),
 

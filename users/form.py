@@ -1,5 +1,5 @@
 from django.forms import fields, models
-from .models import Profile
+from .models import Contact, Profile
 from django import forms
 
 
@@ -17,3 +17,9 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['image']
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['username', 'title', 'message']
