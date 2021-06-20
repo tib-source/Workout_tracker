@@ -42,13 +42,11 @@ def contact_view(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            try:
-                username = form.cleaned_data.get('username')
-            except:
-                username = None
+            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             title = form.cleaned_data.get('title')
             message = form.cleaned_data.get('message')
-            Contact(username=username, title=title, message=message)
+            Contact(username=username, email=email, title=title, message=message)
             messages.info(request, 'You message has been sent')
             render(request, 'users/contact.html', context)
     form = ContactForm()

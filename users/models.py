@@ -83,11 +83,9 @@ class Profile(models.Model):
 
 class Contact(models.Model):
     username = models.CharField(max_length=15, null=True, default=None)
-    title = models.TextField(max_length=100)
+    email = models.EmailField(null=True)
+    title = models.CharField(max_length=100)
     message = models.TextField(max_length=400)
 
     def __str__(self):
-        if self.username:
-            return f"{self.user} - {self.title}"
-        else:
-            return self.title
+        return f"{self.username} -> {self.title}"

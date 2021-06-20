@@ -22,4 +22,4 @@ class UserProfileForm(forms.ModelForm):
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ['username', 'title', 'message']
+        fields = ['username', 'email','title', 'message']
