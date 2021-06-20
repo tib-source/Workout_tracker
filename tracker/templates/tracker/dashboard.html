@@ -1,18 +1,20 @@
 {% extends 'dashboard_base.html'%}
-
-{% block css%}
-
-{% endblock%}
-
+{% load static %}
 
 {% block content %}
+
+<script >
+    var Weight_label = {{user.profile.get_weight_list.1|safe}};
+    var Weight_data = {{user.profile.get_weight_list.0}};
+
+</script>
 
 <div class="content">
     
     <div class="container">
         <div class="header">
             <h1 class="title">Dashboard</h1> 
-            <p>Current Workout : xxxxxxxxx</p>
+            <p>Current Goal : {{user.workout.get_goal}}</p>
         </div> 
     
         <div class="entry links">
@@ -26,10 +28,10 @@
     
         <div class="info">
             <div class="activity">
-                <canvas id="activity"><div></div></canvas>
+                {% include "tracker/snippets/chart.html" with Data="activity" %} 		
             </div>
             <div class="weight">
-                <canvas id="weight"><div></div></canvas>
+                {% include 'tracker/snippets/chart.html' with Data="weight"  %}
             </div>
         </div>
     </div>

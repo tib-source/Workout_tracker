@@ -1,0 +1,49 @@
+<canvas id="{{Data}}" width="300rem" height="300rem"></canvas>
+<script>
+var ctx = document.getElementById('{{Data}}').getContext('2d');
+
+var lineChartData = {
+   labels: Weight_label,
+   datasets: [{
+      label: 'Weight',
+      fontColor: '#fff',
+      backgroundColor: 'rgba(220,220,220,0.2)',
+      borderColor: 'rgba(220,220,220,1)',
+      pointBackgroundColor: 'rgba(220,220,220,1)',
+      pointBorderColor: '#fff',
+      data: Weight_data
+   }]
+}
+
+var options = {
+   responsive: true,
+   maintainAspectRatio: false,
+   legend: {
+      fontColor: "white",
+   },
+   scales: {
+      xAxes: [{
+         ticks: {
+            fontColor: "white",
+         }
+      }],
+      yAxes: [{
+         ticks: {
+            fontColor: "white",
+            beginAtZero: true,
+            maxTicksLimit: 5,
+            stepSize: Math.ceil(250 / 5),
+            max: 250
+         }
+      }]
+   }
+};
+
+var chart = new Chart(ctx, {
+   type: 'line',
+   data: lineChartData,
+   options: options //<- assign this
+});
+</script>
+
+

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.deletion import DO_NOTHING
 import bisect
+import datetime
 
  #### LEVEL SYSTEM ####
 BASE_EXP = 100
@@ -18,7 +20,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=50)
     image = models.ImageField(default='/static/profile_pics/default.png', upload_to='media/static/profile_pics')
     exp = models.IntegerField(default=0)
-    weight = models.IntegerField(default=0)
+    weight = models.ManyToManyField("tracker.BodyWeight", related_name='user_weight')
     height = models.IntegerField(default=0)
     
     def __str__(self) -> str:
@@ -64,3 +66,16 @@ class Profile(models.Model):
     def next_level(self)-> int:
         """ returns exp reqiired for the next level"""
         return int(LEVEL_RANGE[self.get_level+1])
+
+    @property
+    def get_weight_list(self)-> tuple:
+        """
+        returns a list of weight objects that are linked to this profile
+        """
+        import tracker.models as user_model
+        weight_objects = user_model.BodyWeight.objects.filter(profile=self)
+        weights = [ x.weight for x in weight_objects]
+        date = [datetime.datetime.strftime(x.date_added, r'%m-%d') for x in weight_objects]
+        return (weights, date)
+
+

@@ -127,31 +127,27 @@ main{
     flex: 5;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 90%;
     height: 50%;
     background-image:linear-gradient(rgba(106, 98, 98,0.7),rgba(102, 95, 95, 0.1));
     backdrop-filter: blur(2rem);
-    padding: 2rem;
     border-radius:1rem;
     margin-bottom: 2rem;
+    padding: 1rem 0rem;
 
 }
-
 .info>*{
-    width: 400px;
-    height: 400px;
-    margin: 2px;
-    background: white;
     border-radius: 1rem;
+    text-decoration: white;
 }
-
 .ranking{
     flex:1.5;
     display: flex;
     align-items: center;
     justify-content: flex-start;
 }
+
 .ranking>table{
     color: white ;
 }
@@ -160,3 +156,5 @@ main{
 .table{
     color: white;
 }
+
+
