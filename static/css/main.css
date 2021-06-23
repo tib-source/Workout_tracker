@@ -54,6 +54,7 @@ nav{
 }
 .nav_bar a:hover{
     color: tomato;
+    
 }
 .nav_bar a:hover::after{
     width: 100%;
