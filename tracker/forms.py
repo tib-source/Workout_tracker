@@ -6,3 +6,5 @@ class BodyWeightForm(forms.ModelForm):
     class Meta:
         model = BodyWeight
         fields = ['weight']
+
+

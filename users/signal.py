@@ -14,7 +14,6 @@ def create_user_profile(sender,instance,created,**kwargs):
 @receiver(signal=post_save, sender=User)
 def save_profile(sender, instance, **kwargs):
     instance.profile.save()
-    instance.workout.save()
 
 
 @receiver(user_logged_in)

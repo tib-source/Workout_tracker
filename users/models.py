@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 import bisect
 import datetime
 
-from django.db.models import base
-
  #### LEVEL SYSTEM ####
 BASE_EXP = 100
 INCREASE_FACTOR = 5
@@ -14,15 +12,18 @@ LEVEL_RANGE = [BASE_EXP*(INCREASE_FACTOR*x) for x in range(50)]
 
 class Profile(models.Model):
 
+    GOAL_CHOICES = [
+        ('LW','Loosing Weight'),
+        ('GM','Gaining Muscle')
+    ]
     #### MODEL FIELDS ###
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    firstname = models.CharField(max_length=20)
-    lastname = models.CharField(max_length=20)
-    email = models.EmailField(max_length=50)
+    age = models.PositiveIntegerField(null=True, blank=True)
+    goal = models.CharField(max_length=20, choices=GOAL_CHOICES, default='Gaining Muscle')
     image = models.ImageField(default='/static/profile_pics/default.png', upload_to='media/static/profile_pics')
     exp = models.IntegerField(default=0)
     weight = models.ManyToManyField("tracker.BodyWeight")
-    height = models.IntegerField(default=0)
+    height = models.IntegerField(null=True, blank=True)
     
     def __str__(self) -> str:
         return f'{self.user.username} Profile'
@@ -39,10 +40,7 @@ class Profile(models.Model):
     
     @property
     def fullname(self):
-        if self.firstname and self.lastname:
-            return f"{self.firstname} {self.lastname}"
-        else:
-            return self.user.username
+        return f"{self.user.first_name} {self.user.last_name}"
 
     @property
     def get_level_percentage(self) -> int:
@@ -80,7 +78,10 @@ class Profile(models.Model):
         date = [datetime.datetime.strftime(x.date_added, r'%m-%d') for x in weight_objects]
         return (weights, date)
 
-
+    @property
+    def get_goal(self):
+        return self.get_goal_display()
+        
 class Contact(models.Model):
     username = models.CharField(max_length=15, null=True, default=None)
     email = models.EmailField(null=True)

@@ -1,24 +1,14 @@
-from users.models import Profile
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.deletion import DO_NOTHING
-from django.db.models.fields import CharField
 # Create your models here.
 
-GOAL_CHOICES = [
-    ('LW','Loosing Weight'),
-    ('GM','Gaining Muscle')
-]
 class WorkOut(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    goal = models.CharField(max_length=20, choices=GOAL_CHOICES, default='Gaining Muscle')
-
+    image = models.ImageField(upload_to='media/static/workout_images', null=True, blank=True)
+    name = models.CharField(max_length = 200)
+    description = models.TextField(null=True, blank=True)
     def __str__(self) -> str:
-        return f"{self.user.username}'s Workout"
+        return self.name
 
-    @property
-    def get_goal(self):
-        return self.get_goal_display()
 
 
 class BodyWeight(models.Model):

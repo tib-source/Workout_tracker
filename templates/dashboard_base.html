@@ -75,7 +75,7 @@
             <span class="user-info">
                 <div class="img"></div>
                 <!-- username should go here -->
-                <p>{{user.profile.fullname}}</p>
+                <p>{{user.get_full_name}}</p>
                 <div class="gamify">
                     <p class="exp">EXP: {{user.profile.exp}}</p>
                     <div class="level"></div>
@@ -91,7 +91,7 @@
                 </div>
                 <div class="link">
                     <!-- FIND LOGO TO PUT HERE -->
-                    <p> <a href="#">Workouts</a> </p>
+                    <p> <a href="{% url 'workout'%}">Workouts</a> </p>
                 </div>
                 <div class="link">
                     <!-- FIND LOGO TO PUT HERE -->

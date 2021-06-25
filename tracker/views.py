@@ -50,6 +50,5 @@ def weight_view(request):
 
 
 class WorkoutView(ListView):
-    model = Routine
-    context_object_name = "routines"
+    model = WorkOut
     template_name = "tracker/workout.html"

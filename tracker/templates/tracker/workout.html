@@ -1,50 +1,39 @@
-{% extends 'dashboard_base.html'%}
+{% extends 'dashboard_base.html'%} 
 {% load static %}
-
 {% block content %}
 
-<script >
-    var Weight_label = "{{user.profile.get_weight_list.1|safe}}";
-    var Weight_data = "{{user.profile.get_weight_list.0}}";
-
-</script>
+<style>
+  .workout{
+    display: flex;
+    align-items: center;
+}
+  .workout>*{
+    margin: 1rem;
+  }
+  .workout-info{
+    display: flex;
+    flex-direction: column;
+  }
+</style>
 
 <div class="content">
-    
-    <div class="container">
-        <div class="header">
-            <h1 class="title">Dashboard</h1> 
-            <p>Current Goal : {{user.workout.get_goal}}</p>
-        </div> 
-    
-        <div class="entry links">
-            <div class="link">   
-                <a href="#">Log new Workout</a>
-            </div>
-            <div class="link">
-                <a class="link" href="{% url 'weight' %}">Log new Weight</a>
-            </div>
-        </div>
-    
-        <div class="info">
-            <div class="activity">
-                {% include "tracker/snippets/chart.html" with Data="activity" %} 		
-            </div>
-            <div class="weight">
-                {% include 'tracker/snippets/chart.html' with Data="weight"  %}
-            </div>
-        </div>
+  <div class="container">
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <div class="workout">
+        <img src="{{object.image.url}}" wdith='150em' height='250em' alt="">
+      <span class="workout-info">
+      <h2>{{ object.name }}</h2>
+      <p>{{ object.description }}</p>
+    </span>
+      <hr />
+      <!-- If objet_list is empty  -->
+      {% empty %}
+      <li>No objects yet.</li>
     </div>
-</div> 
-
-
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock content %}
-
-
-
-
-
-
-
-

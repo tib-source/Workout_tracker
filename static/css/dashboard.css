@@ -39,12 +39,6 @@ main{
     box-shadow: 2px 20px 1.5rem rgba(0, 0, 0, 0.412);
 }
 
-@media only screen (max-width: 600px){
-    .sidebar{
-        display:none;
-    }
-    
-}
 .user-info{
     display: flex;
     flex-direction: column;
@@ -212,3 +206,6 @@ main{
 textarea{
     height: 10rem;
 }
+
+/* WEIGHT */
+

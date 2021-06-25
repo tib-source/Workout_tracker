@@ -213,8 +213,7 @@ hr {
   }
   
   label{
-    display:flex;
-    flex-direction:row;
+      display: inline-block;
     align-items:center;
   
   }
@@ -282,3 +281,7 @@ hr {
     display: flex;
     justify-content: center;
 }
+
+
+/* WEIGHT */
+

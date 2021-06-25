@@ -1,11 +1,12 @@
 from typing import ContextManager
 from users.models import Contact
 from django.shortcuts import redirect, render
-from .form import ContactForm, UserCreationForm
+from .form import ContactForm, RegistrationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
-
+from django.views import generic
+from django.urls import reverse_lazy
 # Create your views here.
 
 def loginView(request):
@@ -22,19 +23,18 @@ def loginView(request):
     return render(request, 'users/login.html', context)
 
 def register_view(request):
-    form = UserCreationForm()
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+    form = RegistrationForm()
+    if request.POST:
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home') ### YOU NEED TO MAKE A DASHBOARD 
+            return redirect('login') ### YOU NEED TO MAKE A DASHBOARD 
         else:
-            form = UserCreationForm()
+            form = RegistrationForm()
     else:
-        form = UserCreationForm()
+        form = RegistrationForm()
     context = {'form':form}
     return render(request, 'users/register.html', context)
-
 
 def contact_view(request):
     context = {}
