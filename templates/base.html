@@ -22,9 +22,9 @@
 </head>
 <body>
     <!-- Navigation bar -->
-    <section class="header" id="header">
+    <section class="header">
         <nav>
-            <a href="{% url 'home' %}" style="color: white;">Logo here</a>
+            <a href="{% url 'home' %}" style="color: white;" class="logo">Logo here</a>
             <div class="nav_bar">
                 <ul class="nav_group">
                     <li> <a href="{% url 'login'%}" class="nav_link">Login</a></li>
@@ -35,9 +35,11 @@
             </div>
         </nav>
 
-        {% block content %}
 
-        {% endblock content %}
+    {% block content %}
+
+    {% endblock content %}
+
     </section>
     <!-- Bootstrap JS -->
     <!-- JavaScript Bundle with Popper -->

@@ -19,6 +19,7 @@ from django.urls import path
 from django.urls.conf import include
 from django.contrib.auth import views as auth_views
 from users.views import contact_view, register_view, loginView
+from tracker.views import homeview
 
 urlpatterns = [
 
@@ -26,7 +27,8 @@ urlpatterns = [
 
     #--- Tracker app ----#
 
-    path('', include('tracker.urls')),
+    path('', homeview, name='home'),
+    path('dashboard/', include('tracker.urls')),
 
     #--- Users Section ---#
     path('register/', register_view, name='register'),

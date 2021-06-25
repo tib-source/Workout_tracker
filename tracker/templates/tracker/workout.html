@@ -4,8 +4,8 @@
 {% block content %}
 
 <script >
-    var Weight_label = {{user.profile.get_weight_list.1|safe}};
-    var Weight_data = {{user.profile.get_weight_list.0}};
+    var Weight_label = "{{user.profile.get_weight_list.1|safe}}";
+    var Weight_data = "{{user.profile.get_weight_list.0}}";
 
 </script>
 
@@ -15,7 +15,6 @@
         <div class="header">
             <h1 class="title">Dashboard</h1> 
             <p>Current Goal : {{user.workout.get_goal}}</p>
-            <p>Current Routine: xxxxxxxxxxxxxx </p>
         </div> 
     
         <div class="entry links">

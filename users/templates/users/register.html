@@ -1,14 +1,87 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
-    <div class="login">
-        <form method="POST" class="box-background from-group">
-            <h1>Register</h1>
-            <hr>
-            {% csrf_token %}
-            {{form}}
-            <small class="text-muted">Already have an account? Log in<a href="{% url 'login'%}"> Here</a></small>
-            <button type="submit" class="log">Sign Up</button>
 
-        </form>
-    </div>
+<div class="login" >
+  <div class="form">
+    <form action="#" id='survey-form'>
+        <h1 id='title'> Registration </h1>
+        <hr>
+        {% csrf_token %}
+        {% if messages %}
+        {% for message in messages %}
+            <p class="alert alert-danger">{{message}}</p>
+        {% endfor %}
+        {% endif %}
+      <!--  NAME-->
+      <div class="group">
+        <label id="name-label" for="name">Name:</label>
+        <input type="text" id='name' placeholder='Name' required>
+      </div>
+      <!--  USERNAME-->
+      <div class="group">
+        <label id="name-label" for="username">Username:</label>
+        <input type="text" id='username' placeholder='Username' required>
+      </div>
+      <!--  EMAIL-->
+      <div class="group">
+        <label id="email-label" for="email">Email:</label>
+        <input type="email" id='email' placeholder='Email' required>
+      </div>
+      <!--  NUMBER-->
+      <div class="group">
+        <label id="number-label" for="number">Age:</label>
+        <input type="number" id='number' placeholder='Age' min='1' max="100">
+      </div>
+
+      <!--  RADIO-->
+      <div class="group">
+          <p>Gender: </p>
+          <label for="male"> <input class='radio' type="radio" name='gender' id='male' value='male'>
+            Male</label>
+
+          <label for="female"> <input class='radio' type="radio" name='gender' id='female' value='female'>
+            Female</label>
+
+          <label for="female"> <input class='radio' type="radio" name='gender' id='other' value='other'>
+            Other</label>
+      </div>
+            <!--  DROPDOWN-->
+      <div class="group">
+        <label for="dropdown">Current Goal </label>
+        <select name="dropdown" id="dropdown">
+          <option value="1">Loosing Weight</option>
+          <option value="2">Gaining Muscle</option>
+        </select>
+      </div>
+<!--       
+      TEXTAREA
+      <div class="group">
+        <p>Extra Infromation: </p>
+        <textarea name="extra" id="textarea"></textarea>
+      </div>
+       EMAIL LIST
+      <div class="group">
+        
+          <p>Devices at Home: </p>
+          <label for="Phone">
+            <input class='check' type="checkbox" name='devices' id='Phone' value='Phone'>
+            Phone
+          </label>
+          <label for="Laptop"> <input class='check' type="checkbox" name='devices' id='Laptop' value='Laptop'>
+            Laptop</label>
+          <label for="Tablet"> <input class='check' type="checkbox" name='devices' id='Tablet' value='Tablet'>
+            Tablet</label>
+          <label for="SmartWatch"> <input class='check' type="checkbox" name='devices' id='SmartWatch' value='SmartWatch'>
+            SmartWatch</label>
+      </div> -->
+        <small class="text-muted">Already have an account? Log in<a href="{% url 'login'%}"> Here</a></small>
+        
+        <div class="button">
+            <button type="submit" class="log">Sign In</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
 {% endblock content %}

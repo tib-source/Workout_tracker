@@ -1,10 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.base import Model
-from django.db.models.deletion import DO_NOTHING
 import bisect
 import datetime
 
+from django.db.models import base
 
  #### LEVEL SYSTEM ####
 BASE_EXP = 100
@@ -22,7 +21,7 @@ class Profile(models.Model):
     email = models.EmailField(max_length=50)
     image = models.ImageField(default='/static/profile_pics/default.png', upload_to='media/static/profile_pics')
     exp = models.IntegerField(default=0)
-    weight = models.ManyToManyField("tracker.BodyWeight", related_name='user_weight')
+    weight = models.ManyToManyField("tracker.BodyWeight")
     height = models.IntegerField(default=0)
     
     def __str__(self) -> str:
@@ -57,12 +56,14 @@ class Profile(models.Model):
         percentage_to_next_lvl = (120/200)*100 -> 60%
 
         """
-        exp_current = self.exp
         current_lvl = self.get_level
-        next_lvl = current_lvl + 1
-        exp_for_next_lvl = LEVEL_RANGE[next_lvl]
-        percentage_to_next_lvl = (exp_current/exp_for_next_lvl) * 100
-        return percentage_to_next_lvl
+        current_lvl_min_exp = LEVEL_RANGE[current_lvl-1]
+        current_exp = self.exp
+        next_lvl_exp = LEVEL_RANGE[self.get_level+1] # "2" because the list starts at index 0 and +1 would return the exp required for the current level 
+        exp = current_exp - current_lvl_min_exp
+        next = next_lvl_exp - current_lvl_min_exp
+        percentage = (exp/next)*100
+        return percentage
 
     @property
     def next_level(self)-> int:
@@ -74,8 +75,7 @@ class Profile(models.Model):
         """
         returns a list of weight objects that are linked to this profile
         """
-        import tracker.models as user_model
-        weight_objects = user_model.BodyWeight.objects.filter(profile=self)
+        weight_objects = self.weight.all()
         weights = [ x.weight for x in weight_objects]
         date = [datetime.datetime.strftime(x.date_added, r'%m-%d') for x in weight_objects]
         return (weights, date)

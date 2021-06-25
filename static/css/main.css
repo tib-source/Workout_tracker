@@ -1,21 +1,27 @@
-*{
+
+*, *::before, *::after {
+    box-sizing: border-box;  
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
 
 }
 body{
-    background-color: aliceblue;
-
-}
-.header{
     min-height: 100vh;
     width: 100%;
+    font-family: 'Poppins', sans-serif;
     background-image: linear-gradient(rgba(4,9,30,0.7),
      rgba(4,9,30,0.7)), url(/media/static/web_img/background.jpeg);
      background-position: center;
      background-size: cover;
      position: relative;
+
+
+}
+.header{
+    height: auto;
+    width: 100%;
+
 
 }
 .nav_group{
@@ -25,12 +31,15 @@ body{
 nav{
     display: flex;
     padding: 2% 6%;
-    justify-content: space-between;
-    align-items: center;            
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+.logo{
+    margin-right: auto;
 }
 .nav_group li{
     list-style: none;
-    flex: 1;
     margin-left: 15px;
     display: inline-block;
     position: relative;
@@ -111,20 +120,22 @@ nav{
 /* LOGIN PAGE  */
 
 .login{
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    width: fit-content;
     color: white;
+    margin: auto;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.4;
 }
 
 .log{
-    margin-left: 25%;
     padding: 10px 30px;
     background: transparent;
     transition: .5s;
     color: white;
+    
 }
+
 .log:hover{
     background-color: lightcoral;
 }
@@ -142,8 +153,9 @@ hr {
     padding: 30px 50px;
     background-image:linear-gradient(rgba(106, 98, 98,0.7),rgba(102, 95, 95, 0.1) ) ;
     backdrop-filter: blur(2rem);
-    border-radius: 2rem;
+    border-radius: .5rem;
 }
+
 .box-background h1{
     text-align: center;
 }
@@ -166,4 +178,107 @@ hr {
 
 .logout{
     text-align: center;
+}
+
+/* REGISTER */
+
+
+  .form{
+    width: 30rem;
+    line-height: 1.4;
+    color: #F2F1E8;
+    background-image:linear-gradient(rgba(106, 98, 98,0.7),rgba(102, 95, 95, 0.1) ) ;
+    backdrop-filter: blur(2rem);
+    border-radius: .5rem;
+    padding: 2rem;
+  }
+  
+  
+  .group, .form-group{
+    margin: 0 auto .35rem auto;
+    padding: 0.25rem;
+  }
+  
+  
+  .radio, .check{
+      display: inline-block;
+      margin-right: 0.6rem;
+      min-height: 1.25rem;
+      min-width: 1.25rem;
+  }
+  
+  
+  #submit{
+    padding: 1rem 2rem;
+  }
+  
+  label{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+  
+  }
+  input, button, select, textarea {
+      margin: 0;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+  }
+  
+  .group>input, #dropdown, #submit{
+    padding: 0.35em;
+    border-radius: 0.25rem;
+    width: 100%;
+    margin: 0.25em auto;
+    border: 1px solid #003B73;
+  }
+  
+    
+  .form-group>input, #dropdown, #submit{
+    padding: 0.35em;
+    border-radius: 0.25rem;
+    width: 100%;
+    margin: 0.25em auto;
+    border: 1px solid #003B73;
+  }
+  
+  textarea{
+    padding: 0.35em;
+    border-radius: 0.25rem;
+    width: 100%;
+    margin: 0.25em auto;
+    height: 6em;
+  }
+  
+  #submit{
+    color: white;
+    font-weight: 600;
+    background: #003B73;
+  }
+
+  .content{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+  .contact{
+    display: block;
+    width: 30%;
+    background-image:linear-gradient(rgba(106, 98, 98,0.7),rgba(102, 95, 95, 0.1) ) ;
+    backdrop-filter: blur(2rem);
+    border-radius: .5rem;
+    padding: 2rem;
+
+}
+
+.contact h1{
+    text-align: center;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
 }

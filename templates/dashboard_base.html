@@ -87,7 +87,7 @@
             <div class="links">
                 <div class="link">
                     <!-- FIND LOGO TO PUT HERE -->
-                    <p> <a href="#">Home</a> </p>
+                    <p> <a href="{% url 'dashboard'%}">Home</a> </p>
                 </div>
                 <div class="link">
                     <!-- FIND LOGO TO PUT HERE -->
@@ -106,7 +106,40 @@
         {% block content %}
 
         {% endblock content %}
-
+        
+    <div class="ranking sidebar">
+            <div class="rank_titile">
+                <h3>  User Ranking</h3>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <th scope="col">Rank</th>
+                        <th scope="col">User</th>
+                        <th scope="col">EXP</th>
+                    </thead>
+                    <tbody>
+                        {% for user_rank in ranking %}
+                            {% if user_rank == request.user %}
+                                <tr class="table-light" id="selected">
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>-{{user_rank.username}}-</td>
+                                    <td>{{user_rank.profile.exp}}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <th scope="row">{{forloop.counter}}</th>
+                                    <td>{{user_rank.username}}</td>
+                                    <td>{{user_rank.profile.exp}}</td>
+                                </tr>
+                            {% endif%}
+            
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        
+        </div>
     </main>
 </body>
 </html>

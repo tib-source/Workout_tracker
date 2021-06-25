@@ -1,9 +1,12 @@
-from tracker.models import WorkOut
+from tracker.models import Routine, WorkOut
 from users.models import Profile
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.contrib.auth.models import User
+from .forms import BodyWeightForm
+from django.contrib import messages
+from django.views.generic import ListView, UpdateView  
 def homeview(request):
     if request.user.is_authenticated:
         """
@@ -30,3 +33,23 @@ def dashboard_view(request):
         'ranking': User.objects.all().order_by('-profile__exp'), 
     }
     return render(request, 'tracker/dashboard.html', context)
+
+
+def weight_view(request):
+    if request.POST:
+        form = BodyWeightForm(request.POST)
+        if form.is_valid():
+            form.save()
+            model_instance = form.instance
+            request.user.profile.weight.add(model_instance)
+            messages.success(request,'Weight successfully logged')
+    else:
+        form = BodyWeightForm()
+    context = {}
+    return render(request, 'tracker/weight.html', context)  
+
+
+class WorkoutView(ListView):
+    model = Routine
+    context_object_name = "routines"
+    template_name = "tracker/workout.html"
