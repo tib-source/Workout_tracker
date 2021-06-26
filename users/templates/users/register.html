@@ -18,43 +18,46 @@
         {% for field in form %}
 
           {% for error in field.errors %}
-          {{ error|safe  }}
+          <p class="alert alert-danger">{{ error|safe  }}</p>
           {% endfor %}
 
         {% endfor %}
       {% endif %}
       <!--  NAME-->
+      
+
+
       <div class="group">
         <label id="name-label" for="firstname">First name:</label>
-        <input type="text" id='firstname' placeholder='First name' required>
+        <input type="text" name='first_name' id='firstname' placeholder='First name' required autofocus>
       </div>
       <!--  NAME-->
       <div class="group">
         <label id="name-label" for="lastname">Last name:</label>
-        <input type="text" id='lastname' placeholder='Last name' required>
+        <input type="text" name='last_name' id='lastname' placeholder='Last name' required>
       </div>
       <!--  USERNAME-->
       <div class="group">
         <label id="name-label" for="username">Username:</label>
-        <input type="text" id='username' placeholder='Username' required>
+        <input type="text" name='username' id='username' placeholder='Username' required>
       </div>
       <!--  EMAIL-->
       <div class="group">
         <label id="email-label" for="email">Email:</label>
-        <input type="email" id='email' placeholder='Email' required>
+        <input type="email" name='email' id='email' placeholder='Email' required>
       </div>
       <!--  NUMBER-->
       <div class="group">
         <label id="number-label" for="age">Age:</label>
-        <input type="age" id='age' placeholder='Age' min='1' max="100">
+        <input type="age" name='age' id='age' placeholder='Age' min='1' max="100">
       </div>
-
-
+      
+      
       <!-- <div class="group">
           <p>Gender: </p>
           <label for="male"> <input class='radio' type="radio" name='gender' id='male' value='1'>
             Male</label>
-
+      
           <label for="female"> <input class='radio' type="radio" name='gender' id='female' value='2'>
             Female</label>
       </div> -->
@@ -62,17 +65,17 @@
       <div class="group">
         <label for="goal">Current Goal: </label>
         <select name="goal" id="dropdown">
-          <option value="1">Loosing Weight</option>
-          <option value="2">Gaining Muscle</option>
+          <option value="LW">Loosing Weight</option>
+          <option value="GW">Gaining Muscle</option>
         </select>
       </div>
       <div class="group">
-        <label id="name-label" for="password">Password: </label>
-        <input type="password" id='password' name="password1" required>
+        <label id="name-label" for="password1">Password: </label>
+        <input type="password" id='password1' name="password1" autocomplete="new-password" required>
       </div>
       <div class="group">
-        <label id="name-label" for="password">Password confirmation: </label>
-        <input type="password" id='password' name="password2" required>
+        <label id="name-label" for="password2">Password confirmation: </label>
+        <input type="password" id='password2' name="password2" autocomplete="new-password" required>
       </div>
       <!--       
       TEXTAREA
@@ -96,7 +99,7 @@
             SmartWatch</label>
       </div> -->
       <small class="text-muted">Already have an account? Log in<a href="{% url 'login'%}"> Here</a></small>
-
+      
       <div class="button">
         <button type="submit" class="log">Sign Up</button>
       </div>
@@ -106,3 +109,6 @@
 
 </div>
 {% endblock content %}
+
+
+

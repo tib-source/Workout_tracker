@@ -8,7 +8,6 @@ from tracker.models import WorkOut
 @receiver(signal=post_save, sender=User)
 def create_user_profile(sender,instance,created,**kwargs):
     if created:
-        WorkOut.objects.create(user=instance)
         Profile.objects.create(user=instance)
 
 @receiver(signal=post_save, sender=User)
