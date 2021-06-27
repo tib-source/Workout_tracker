@@ -1,12 +1,8 @@
-from typing import ContextManager
-from users.models import Contact
 from django.shortcuts import redirect, render
 from .form import ContactForm, RegistrationForm
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib import messages
-from django.views import generic
-from django.urls import reverse_lazy
+
 # Create your views here.
 
 def loginView(request):
@@ -46,3 +42,5 @@ def contact_view(request):
             render(request, 'users/contact.html', context)
     form = ContactForm()
     return render(request, 'users/contact.html', context)
+
+

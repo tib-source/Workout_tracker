@@ -24,13 +24,9 @@ def homeview(request):
 
 @login_required(login_url='login')
 def dashboard_view(request):
-    """
-    ranking context -  is a list of all the users in the database ordered by the ammount of exp they have 
-    This context is used for the right sidebar where a table of users is displayed and to add a competitive nature to the website
-    """
+
     context = {
         'workout':WorkOut.objects.all(),
-        'ranking': User.objects.all().order_by('-profile__exp'), 
     }
     return render(request, 'tracker/dashboard.html', context)
 
