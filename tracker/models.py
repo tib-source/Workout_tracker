@@ -48,12 +48,10 @@ class Excercise(models.Model):
     """
     name = models.CharField(max_length=100, null=True)
     weight = models.ManyToManyField(WorkoutWeight)
-    set1 = models.IntegerField()
-    set2 = models.IntegerField()
-    set3 = models.IntegerField()
     rep_set1 = models.IntegerField()
     rep_set2 = models.IntegerField()
     rep_set3 = models.IntegerField()
+    filled = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.name

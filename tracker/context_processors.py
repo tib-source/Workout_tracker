@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
-def get_ranking():
+
+def get_ranking(request):
     """
     This context processor is used to display the ranking information of users interms of exp
     """
