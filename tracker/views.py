@@ -1,12 +1,11 @@
-from tracker.models import Routine, WorkOut
-from users.models import Profile
+from tracker.models import  WorkOut
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-# Create your views here.
-from django.contrib.auth.models import User
 from .forms import BodyWeightForm
 from django.contrib import messages
-from django.views.generic import ListView, UpdateView  
+from django.views.generic import ListView
+
+
 def homeview(request):
     if request.user.is_authenticated:
         """
@@ -48,3 +47,10 @@ def weight_view(request):
 class WorkoutView(ListView):
     model = WorkOut
     template_name = "tracker/workout.html"
+
+
+def log_workout_view(request):
+    context = {
+        'stronglift': WorkOut.objects.first().excercise.all()
+    }
+    return render(request, 'tracker/log_workout.html', context )

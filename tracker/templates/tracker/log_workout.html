@@ -1,0 +1,68 @@
+{% extends 'dashboard_base.html'%}
+{% load static %}
+
+{% block content %}
+
+<div class=" content">
+    <form method="POST" class="contact">
+            <h1> Workout Entry</h1>
+        <hr>
+        {% csrf_token %}
+        {% if messages %}
+        {% for message in messages %}
+            <p class="alert alert-{{ message.tags }}">{{message}}</p>
+        {% endfor %}
+        {% endif %}
+    
+        
+
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <th scope="col">Name</th>
+                        <th scope="col">Set 1</th>
+                        <th scope="col">Set 2</th>
+                        <th scope="col">Set 3</th>
+                        
+                    </thead>
+                    <tbody>
+                        {% for excercise in stronglift%}
+                                <tr>
+                                    <th scope="row">{{excercise.name}}</th>
+                                    <td><input type="number" step="1" min='0' class="form-control" name="weight"  placeholder="reps.." value="">
+                                    </td>
+                                    <td><input type="number" step="1" min='0' class="form-control" name="weight"  placeholder="reps.." value=""></td>
+                                    <td><input type="number" step="1" min='0' class="form-control" name="weight"  placeholder="reps.." value=""></td>
+                                </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        
+    
+        <div class="button">
+            <button type="submit" class="log">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock content %}
+
+
+            <div class="form-group row">
+                <div class="col">
+                    <label for="username">Set 1: </label>
+                    <input type="number" step="0.01" min='0' class="form-control" name="weight"  placeholder="reps.." value="">
+                </div>
+                <div class="col">
+                    <label for="username">Set 2: </label>
+                    <input type="number" step="0.01" min='0' class="form-control" name="weight"  placeholder="reps.." value="">
+                </div>
+                <div class="col">
+                    <label for="username">Set 3: </label>
+                    <input type="number" step="0.01" min='0' class="form-control" name="weight"  placeholder="reps.." value="">
+                </div>
+            </div>

@@ -139,10 +139,7 @@ main{
     padding: 1rem 0rem;
 
 }
-.info>*{
-    border-radius: 1rem;
-    text-decoration: white;
-}
+
 .ranking{
     display: flex;
     align-items: center;
@@ -208,4 +205,3 @@ textarea{
 }
 
 /* WEIGHT */
-

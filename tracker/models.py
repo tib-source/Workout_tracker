@@ -1,14 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import User
 # Create your models here.
 
 class WorkOut(models.Model):
     image = models.ImageField(upload_to='media/static/workout_images', null=True, blank=True)
     name = models.CharField(max_length = 200)
     description = models.TextField(null=True, blank=True)
+    excercise = models.ManyToManyField('Excercise')
     def __str__(self) -> str:
         return self.name
-
 
 
 class BodyWeight(models.Model):
@@ -24,7 +23,7 @@ class BodyWeight(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"BodyWeight Object - {self.date_added}"
+        return f"BodyWeight Object - {self.weight}"
 
 
 class WorkoutWeight(models.Model):
@@ -40,29 +39,38 @@ class WorkoutWeight(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"WorkoutWeight Object - {self.date_added}"
+        return f"Workout Weight - {self.weight}"
 
+
+    
 class Excercise(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return self.name
+
+
+class Workout_data(models.Model):
     """
     A model that defines a specific excercise 
     """
-    name = models.CharField(max_length=100, null=True)
+    name = models.ForeignKey(Excercise, on_delete=models.CASCADE)
     weight = models.ManyToManyField(WorkoutWeight)
-    rep_set1 = models.IntegerField()
-    rep_set2 = models.IntegerField()
-    rep_set3 = models.IntegerField()
+    rep_set1 = models.IntegerField(default=0)
+    rep_set2 = models.IntegerField(default=0)
+    rep_set3 = models.IntegerField(default=0)
     filled = models.BooleanField(default=False)
 
     def __str__(self) -> str:
-        return self.name
+        return f"{self.name.name} data"
 
 
-class Routine(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    workouts = models.ManyToManyField(Excercise)
+# class Routine(models.Model):
+#     name = models.CharField(max_length=100)
+#     description = models.TextField()
+#     workouts = models.ManyToManyField(Excercise)
 
-    def __str__(self) -> str:
-        return self.name
+#     def __str__(self) -> str:
+#         return self.name
 
 

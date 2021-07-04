@@ -25,7 +25,7 @@
         <img src="{{object.image.url}}" wdith='150em' height='250em' alt="">
       <span class="workout-info">
       <h2>{{ object.name }}</h2>
-      <p>{{ object.description }}</p>
+      <p style="text-align: justify;">{{ object.description|safe}}</p>
     </span>
       <hr />
       <!-- If objet_list is empty  -->
